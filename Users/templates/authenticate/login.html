@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container" id="loginpage">
+    <br>
+    <h1>Login</h1>
+    <br/>
+    <form action="" method=POST>
+        {% csrf_token %}
+            <div class="mb-3">
+            <div class="row justify-content-md-center">
+              <label for="exampleInputEmail1" class="form-label">Username</label>
+              <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+            </div></div>
+            <div class="mb-3">
+            <div class="row justify-content-md-center">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" name="password">
+            </div></div>    
+        <input type="submit" value="Log in" class="btn btn-secondary">
+    </form>
+    <br/><br/>
+    Forgot Password? <a href="mailto:ph1210818@iitd.ac.in?subject=Forgot%20Password&body=Username:%20(add%20username%20here)">Send an email to admin.</a>
+  </div>
+{% endblock %}
