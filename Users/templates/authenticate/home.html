@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'basewithnav.html' %}
 
 {% block content %}
-    <h1>Welcome <a href="userbookings">{{ info.firstname }} {{ info.lastname }}</a></h1>
+    <h1>Welcome <a href="userbookings" style="color: maroon;">{{ info.firstname }} {{ info.lastname }}</a></h1>
     <br>
     <form action="" method=POST>
         {% csrf_token %}
