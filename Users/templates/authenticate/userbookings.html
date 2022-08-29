@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ user.firstname }} {{ user.lastname }}: Bookings</h1>
+    <br> <br>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Sport</th>
+            <th scope="col">Court</th>
+            <th scope="col">Slot</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.sport }}</td>
+                    <td>{{ booking.court }}</td>
+                    <td>{{ booking.slot }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

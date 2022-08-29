@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome <a href="userbookings">{{ info.firstname }} {{ info.lastname }}</a></h1>
+    <br>
+    <form action="" method=POST>
+        {% csrf_token %}
+        <ul>
+            {% for sport in sports %}
+                <!--<li><a href="sport" name="sport" value="{{ sport.name }}">{{ sport.name }}</a></li>-->
+                <li><input type="submit" name="sport" value="{{ sport.name }}"></li>
+            {% endfor %}
+        </ul>
+    </form>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ name }}</h1>
+    <br><br>
+    {% if not slots %}
+    <br><br><br>
+        <div class="container" style="text-align: center; font-size: 125%;">
+            No slots available
+        </div>
+    {% endif %}
+    {% if slots %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Court</th>
+            <th scope="col">Slot</th>
+            <th scope="col">Availability</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for slot in slots %}
+            <tr>
+                <form action="" method=POST>
+                    {% csrf_token %}
+                    <td>{{ slot.court }}<input type="hidden" name="court" value="{{ slot.court }}"></td>
+                    <td>{{ slot.slot }}<input type="hidden" name="slot" value="{{ slot.slot }}"></td>
+                    <td>
+                        {{ slot.available }}
+                        {% if slot.available == "Available" %}
+                            <br>
+                            <input type="submit" value="Book now" class="btn btn-success btn-sm">
+                        {% endif %}
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}
