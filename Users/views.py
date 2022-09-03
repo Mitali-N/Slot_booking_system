@@ -177,7 +177,7 @@ def sportpage(request):
             except:
                 pass
    
-    return render(request,'authenticate/sport.html',{'name':sportname,'slots':l,'limit':lmt})
+    return render(request,'authenticate/sport.html',{'name':sportname,'slots':l,'limit':lmt,'username':request.user.username})
 
 
 def bookings(request):

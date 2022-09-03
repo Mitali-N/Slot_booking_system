@@ -37,8 +37,8 @@
                     <td>{{ slot.court }}<input type="hidden" name="court" value="{{ slot.court }}"></td>
                     <td>{{ slot.slot }}<input type="hidden" name="slot" value="{{ slot.slot }}"></td>
                     <td>
-                        {{ slot.available }}
                         {% if slot.available == "Available" %}
+                            {{ slot.available }}
                             <br>
                             {% if not limit %}
                                 <input type="submit" value="Book now" name="book" class="btn btn-success btn-sm">
@@ -49,11 +49,20 @@
                         {% endif %}
                         {% if slot.available == "Not available" %}
                             {% if request.session.usertype == "staff" %}
+                                {{ slot.available }}
                                 <br>
                                 <i>Booked by: {{ slot.bookedby }} &emsp;</i>
                                 <input type="hidden" name="bookedby" value="{{ slot.bookedby }}">
                                 <input type="submit" class="btn btn-warning btn-sm" name="edit" value="Edit">
                                 <input type="submit" class="btn btn-danger btn-sm" name="cancel"  value="Cancel booking">
+                            {% endif %}
+                            {% if request.session.usertype == "member" %}
+                                {% if slot.bookedby|stringformat:'s' == username|stringformat:'s' %}
+                                    <span style="color: #14992c; font-weight: bold;"> Your booking has been confirmed</span>
+                                {% endif %}
+                                {% if slot.bookedby|stringformat:'s' != username|stringformat:'s' %}
+                                    <span style="color: #820404">{{ slot.available }}</span>
+                                {% endif %}
                             {% endif %}
                         {% endif %}
                     </td>
