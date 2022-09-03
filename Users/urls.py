@@ -13,5 +13,6 @@ urlpatterns = [
     path('bookslot', views.bookslot, name="bookslot"),
     path('edit', views.edit, name="edit"),
     path('cancel', views.cancel, name="cancel"),
+    path('refresh', views.refresh, name="refresh"),
     path('logout_user/', views.logout_user, name="logout"),
 ]

@@ -362,3 +362,16 @@ def cancel(request):
         return redirect('sport')
 
     return render(request, 'authenticate/cancel.html')
+
+
+def refresh(request):
+    sport_refresh = SportSpecificSlot.objects.all()
+    for refreshing in sport_refresh:
+        refreshing.available = True
+        refreshing.save()
+
+    user_refresh = Booking.objects.all()
+    for refrsh in user_refresh:
+        refrsh.delete()
+    
+    return redirect('home')
