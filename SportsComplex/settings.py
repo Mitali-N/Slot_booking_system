@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-rvvb0yk#48$n!x+%5v!svkwvbg6lw&98dbif^ec6n$*3&hk&wd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['salty-caverns-01893.herokuapp.com']
 
 
 # Application definition
@@ -113,6 +113,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
