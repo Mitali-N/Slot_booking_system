@@ -1,0 +1,19 @@
+{% extends 'basewithnav.html' %}
+
+{% block content %}
+  <div class="container">
+    <br>
+    <h1>Add Sport</h1>
+    <br/>
+    <form action="" method=POST>
+        {% csrf_token %}
+            <div class="mb-3">
+            <div class="row justify-content-md-center">
+              <label for="exampleInputEmail1" class="form-label">Sport:</label>
+              <input type="text" class="form-control" name="sportname" aria-describedby="emailHelp">
+            </div></div>  
+        <input type="submit" value="Add" class="btn btn-primary">
+    </form>
+    <br/><br/>
+  </div>
+{% endblock %}

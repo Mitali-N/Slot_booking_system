@@ -1,0 +1,55 @@
+{% extends 'basewithnav.html' %}
+
+{% block content %}
+  <div class="container">
+    <br>
+    <h1>Edit Booking</h1>
+    <br/>
+    <form action="" method=POST>
+        {% csrf_token %}
+        <div class="mb-3">
+            <div class="row justify-content-md-center">
+                <label for="exampleSelect" class="form-label">Member Username:</label>
+                <select class="form-select" aria-label="Default select example" name="member" disabled>
+                    <option selected>{{ request.session.membername }}</option>
+                    {% for member in members %}
+                        <option>{{ member }}</option>
+                    {% endfor %}
+                </select> 
+            </div>
+        </div> 
+        <div class="mb-3">
+            <div class="row justify-content-md-center">
+                <label for="exampleSelect" class="form-label">Sport:</label>
+                <select class="form-select" aria-label="Default select example" name="sprt" disabled>
+                    <option selected>{{ request.session.sport }}</option>
+                    {% for sprt in sportss %}
+                        <option>{{ sprt }}</option>
+                    {% endfor %}
+                </select> 
+            </div>
+        </div>
+        <div class="mb-3">
+            <div class="row justify-content-md-center">
+                <label for="exampleInputEmail1" class="form-label">Court:</label>
+                <input type="text" class="form-control" name="court" aria-describedby="emailHelp">
+            </div>
+        </div> 
+        <div class="mb-3">
+            <div class="row justify-content-md-center">
+                <label for="exampleSelect" class="form-label">Slot:</label>
+                <select class="form-select" aria-label="Default select example" name="slot">
+                    <option selected>Select Slot</option>
+                    {% for slot in slots %}
+                        <option>{{ slot }}</option>
+                    {% endfor %}
+                </select> 
+            </div>
+        </div>
+
+        <br>
+        <input type="submit" value="Update" class="btn btn-primary">
+    </form>
+    <br/><br/>
+  </div>
+{% endblock %}

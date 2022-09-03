@@ -1,7 +1,17 @@
 {% extends 'basewithnav.html' %}
 
 {% block content %}
-    <h1>Welcome <a href="userbookings" style="color: maroon;">{{ info.firstname }} {{ info.lastname }}</a></h1>
+    {% if request.session.usertype == 'member' %}
+        <h1>Welcome <a href="userbookings" style="color: maroon;">{{ info.firstname }} {{ info.lastname }}</a></h1>
+    {% endif %}
+
+    {% if request.session.usertype == 'staff' %}
+        <h1>Welcome {{ info.firstname }} {{ info.lastname }}</h1>
+        <br>
+        <div class="container" style="text-align: right;">
+            <a class="btn btn-secondary" href="addsport">+ Add Sport</a>
+        </div>
+    {% endif %}
     <br>
     <form action="" method=POST>
         {% csrf_token %}

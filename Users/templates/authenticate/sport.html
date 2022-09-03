@@ -1,8 +1,19 @@
 {% extends 'basewithnav.html' %}
 
 {% block content %}
+    {% if limit %}
+        <span style="color: red;">You have reached your daily booking limit.</span>
+        <br>
+        <br>
+    {% endif %}
     <h1>{{ name }}</h1>
-    <br><br>
+    <br>
+    {% if request.session.usertype == 'staff' %}
+        <div class="container" style="text-align: right;">
+            <a class="btn btn-info" href="addslot">+ Add Slot</a>
+        </div>
+    {% endif %}
+    <br>
     {% if not slots %}
     <br><br><br>
         <div class="container" style="text-align: center; font-size: 125%;">
@@ -29,7 +40,21 @@
                         {{ slot.available }}
                         {% if slot.available == "Available" %}
                             <br>
-                            <input type="submit" value="Book now" class="btn btn-success btn-sm">
+                            {% if not limit %}
+                                <input type="submit" value="Book now" name="book" class="btn btn-success btn-sm">
+                            {% endif %}
+                            {% if limit %}
+                                <input type="submit" value="Book now" class="btn btn-success btn-sm" disabled>
+                            {% endif %}
+                        {% endif %}
+                        {% if slot.available == "Not available" %}
+                            {% if request.session.usertype == "staff" %}
+                                <br>
+                                <i>Booked by: {{ slot.bookedby }} &emsp;</i>
+                                <input type="hidden" name="bookedby" value="{{ slot.bookedby }}">
+                                <input type="submit" class="btn btn-warning btn-sm" name="edit" value="Edit">
+                                <input type="submit" class="btn btn-danger btn-sm" name="cancel"  value="Cancel booking">
+                            {% endif %}
                         {% endif %}
                     </td>
                 </form>

@@ -2,8 +2,19 @@
 
 {% block content %}
     <h1><span style="color: maroon;">{{ user.firstname }} {{ user.lastname }}:</span> Bookings</h1>
-    <br> <br>
-
+    <br> 
+    {% if limit %}
+        <span style="color: red;">You have reached your daily booking limit.</span>
+        <br>
+    {% endif %}
+    <br> 
+    {% if not bookings %}
+    <br><br><br>
+        <div class="container" style="text-align: center; font-size: 125%;">
+            You don't have any bookings
+        </div>
+    {% endif %}
+    {% if bookings %}
     <table class="table">
         <thead>
           <tr>
@@ -22,4 +33,5 @@
             {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 {% endblock %}
