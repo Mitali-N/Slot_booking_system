@@ -374,4 +374,5 @@ def refresh(request):
     for refrsh in user_refresh:
         refrsh.delete()
     
+    messages.success(request, ('Refresh successful!'))
     return redirect('home')

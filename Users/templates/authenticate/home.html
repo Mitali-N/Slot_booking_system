@@ -2,7 +2,7 @@
 
 {% block content %}
     {% if request.session.usertype == 'member' %}
-        <h1>Welcome <a href="userbookings" style="color: maroon;">{{ info.firstname }} {{ info.lastname }}</a></h1>
+        <h1>Welcome <a href="userbookings" style="color: maroon;">{{ info.firstname }} {{ info.lastname }}</a> !</h1>
     {% endif %}
 
     {% if request.session.usertype == 'staff' %}
@@ -20,6 +20,7 @@
             {% for sport in sports %}
                 <!--<li><a href="sport" name="sport" value="{{ sport.name }}">{{ sport.name }}</a></li>-->
                 <li><input type="submit" name="sport" value="{{ sport.name }}"></li>
+                <br>
             {% endfor %}
         </ul>
     </form>
